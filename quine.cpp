@@ -57,17 +57,21 @@ Termo combinarTermos(const Termo& t1, const Termo& t2) {
     return Termo();
 }
 
+
 std::string paraAlgebrico(const Termo& termo, int num_vars) {
-    std::string resultado;
+    std::string resultado = "(";
     for (size_t i = 0; i < termo.bits.length(); ++i) {
         if (termo.bits[i] == '1') {
-            resultado += (char)('A' + i);
+            resultado += "v" + std::to_string(i + 1);
         } else if (termo.bits[i] == '0') {
-            resultado += (char)('A' + i);
-            resultado += "'";
+            resultado += "!" + std::string("v") + std::to_string(i + 1);
+        }
+        if (termo.bits[i] != '-' && i < termo.bits.length() - 1) {
+            resultado += " "; 
         }
     }
-    return resultado.empty() ? "1" : resultado;
+    resultado += ")";
+    return resultado == "()" ? "1" : resultado;
 }
 
 bool analisarPLA(const std::string& nome_ficheiro, int& num_vars, std::vector<int>& mintermos) {
