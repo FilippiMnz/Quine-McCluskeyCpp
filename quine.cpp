@@ -129,10 +129,10 @@ int main(int argc, char* argv[]) {
 
     std::set<int> conjunto_mintermos(vetor_mintermos.begin(), vetor_mintermos.end());
 
-    std::cout << "Número de variáveis: " << num_variaveis << std::endl;
-    std::cout << "Mintermos: ";
-    for (int m : conjunto_mintermos) std::cout << m << " ";
-    std::cout << "\n---\n";
+//    std::cout << "Número de variáveis: " << num_variaveis << std::endl;
+//  std::cout << "Mintermos: ";
+//    for (int m : conjunto_mintermos) std::cout << m << " ";
+//    std::cout << "\n---\n";
 
     auto inicio = std::chrono::high_resolution_clock::now();
 
@@ -187,13 +187,13 @@ int main(int argc, char* argv[]) {
     std::sort(implicantes_primos.begin(), implicantes_primos.end(), [](const Termo& a, const Termo& b){ return a.bits < b.bits; });
     implicantes_primos.erase(std::unique(implicantes_primos.begin(), implicantes_primos.end()), implicantes_primos.end());
 
-    std::cout << "Implicantes Primos:\n";
-    for (const auto& ip : implicantes_primos) {
-        std::cout << "  " << paraAlgebrico(ip, num_variaveis) << " (" << ip.bits << ") cobre m";
-        for (int m : ip.mintermos) std::cout << m << ",";
-        std::cout << "\b \n";
-    }
-    std::cout << "---\n";
+//    std::cout << "Implicantes Primos:\n";
+//    for (const auto& ip : implicantes_primos) {
+//        std::cout << "  " << paraAlgebrico(ip, num_variaveis) << " (" << ip.bits << ") cobre m";
+//        for (int m : ip.mintermos) std::cout << m << ",";
+//        std::cout << "\b \n";
+//    }
+//    std::cout << "---\n";
 
     std::map<int, std::vector<int>> tabela;
     for (size_t i = 0; i < implicantes_primos.size(); ++i) {
@@ -219,11 +219,11 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    std::cout << "Implicantes Essenciais:\n";
-    for (const auto& termo : solucao) {
-        std::cout << "  " << paraAlgebrico(termo, num_variaveis) << "\n";
-    }
-    std::cout << "---\n";
+//    std::cout << "Implicantes Essenciais:\n";
+//    for (const auto& termo : solucao) {
+//        std::cout << "  " << paraAlgebrico(termo, num_variaveis) << "\n";
+//    }
+//  std::cout << "---\n";
 
     std::set<int> mintermos_restantes;
     for (int m : conjunto_mintermos) {
