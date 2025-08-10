@@ -1,5 +1,6 @@
 import sys
 from collections import defaultdict
+import time
 
 class Termo:
     def __init__(self, bits="", mintermos=None):
@@ -158,7 +159,13 @@ if __name__ == "__main__":
         print("Erro ao processar o arquivo PLA.")
         sys.exit(1)
 
+    import time
+    inicio = time.perf_counter()
+
     resultado = quine_mccluskey(num_vars, mintermos)
+
+    fim = time.perf_counter()
     print("Função Minimizada Final:")
     print("F = " + " + ".join(resultado))
+    print(f"Tempo de processamento: {(fim - inicio)*1000:.2f} ms")
 
